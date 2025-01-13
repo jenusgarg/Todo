@@ -5,8 +5,8 @@ mongoose.connect('');
 
 
 const UserSchema = new mongoose.Schema({
-    username: String,
-    descriptod: String,
+    title: String,
+    description: String,
     completed: Boolean
 });
 

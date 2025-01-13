@@ -2,7 +2,7 @@ const express=require("express");
 const  app=express();;
 const { createTodo,updateTodo }= require("./types");
 const { todo } = require("./Database");
-
+const cors = require("cors");
 
 //  body{
 //     title: String;
@@ -10,6 +10,9 @@ const { todo } = require("./Database");
 //}
 
 app.use(express.json());
+app.use(cors({
+    origin : "http://localhost:5173"
+}));
 
 app.post("/todo", async function(req,res){
          const createPayload=req.body;
@@ -23,7 +26,7 @@ app.post("/todo", async function(req,res){
          }
         
          await todo.create({
-            username:     req.body.title,
+            title:     req.body.title,
             description:  req.body.description,
             completed:    false
         })
